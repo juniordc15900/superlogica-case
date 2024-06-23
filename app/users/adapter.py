@@ -15,11 +15,8 @@ class MySocialAccountAdapter(DefaultSocialAccountAdapter):
     def pre_social_login(self, request, sociallogin):
         if not sociallogin.is_existing:
             print(sociallogin.user)
-            # Se o usuário social não existir, cria um novo usuário no Django
             user = User.objects.create_user(username=sociallogin.user.email, email=sociallogin.user.email)
-            # Conecta o usuário social recém-criado à conta existente
             user.is_staff = True
             sociallogin.connect(request, user)
-            # Define o redirecionamento após o login
             sociallogin.state['next'] = reverse('')
 
