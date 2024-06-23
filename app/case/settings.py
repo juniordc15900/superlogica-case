@@ -32,6 +32,10 @@ SOCIALACCOUNT_LOGIN_ON_GET=True
 LOGIN_URL = '/login'
 LOGIN_REDIRECT_URL = ''
 ACCOUNT_SIGNUP_REDIRECT_URL = ''
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
 ACCOUNT_ADAPTER = 'users.adapter.MyAccountAdapter'
 SOCIALACCOUNT_ADAPTER = 'users.adapter.MySocialAccountAdapter'
 

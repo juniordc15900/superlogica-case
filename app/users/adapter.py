@@ -18,5 +18,5 @@ class MySocialAccountAdapter(DefaultSocialAccountAdapter):
             user = User.objects.create_user(username=sociallogin.user.email, email=sociallogin.user.email)
             user.is_staff = True
             sociallogin.connect(request, user)
-            sociallogin.state['next'] = reverse('')
+
 

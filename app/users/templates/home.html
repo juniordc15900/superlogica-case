@@ -1,30 +1,113 @@
-<!-- templates/home.html -->
 {% load socialaccount %}
 
-
-<html lang="en">
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Bem-vindo à Superlogica</title>
+    <style>
+        /* Estilos Gerais */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            max-width: 400px;
+            padding: 20px;
+        }
+        .card {
+            background-color: #fff;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .button {
+            display: inline-block;
+            padding: 12px 24px;
+            margin: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .button.logout-button {
+            background-color: #dc3545;
+        }
+        .button.logout-button:hover {
+            background-color: #c82333;
+        }
+        .button.django-admin {
+            background-color: #44c767;
+        }
+        .button.django-admin:hover {
+            background-color: #5cbf2a;
+        }
+        h1, p {
+            text-align: center;
+            color: #333;
+        }
+        .welcome-section {
+            margin-top: 50px;
+            text-align: center;
+        }
+        /* Estilos para Telas Pequenas */
+        @media screen and (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+            .card {
+                padding: 15px;
+            }
+            .button {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div>
-        <h1>Bem-vindo à nossa página!</h1>
-        {% if user.is_authenticated %}
-            <p>Olá, {{ user.username }}</p>
-            <form action="{% url 'logout' %}" method="post">
-                {% csrf_token %}
-                <button type="submit">Logout</button>
-            </form>
-            <form action="{% url 'admin:index' %}" method="post">
-                {% csrf_token %}
-                <button type="submit">Django Admin</button>
-            </form>
-        {% else %}
-            <p>Você não está logado. Por favor, faça o login para continuar.</p>
-            <a href="{% provider_login_url 'google' %}?next=/">Login</a>
-        {% endif %}
+    <div class="container">
+        <div class="card">
+            <div class="welcome-section">
+                <h1>Bem-vindo à Superlogica</h1>
+                {% if user.is_authenticated %}
+                    <p>Olá, {{ user.username }}</p>
+                    <form action="{% url 'logout' %}" method="post">
+                        {% csrf_token %}
+                        <button class="button logout-button" type="submit">Logout</button>
+                    </form>
+                    <div>
+                        <a class="button django-admin" href="{% url 'admin:index' %}">Acesso ao Django Admin</a>
+                    </div>
+                    <div>
+                        <h2>Script de Conversão</h2>
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <button type="submit">Upload</button>
+                        </form>
+                    </div>
+                {% else %}
+                    <p>Você não está logado. Faça o login para continuar.</p>
+                    <div>
+                        <a class="button" href="{% provider_login_url 'google' %}?next=/">Login com Google</a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
     </div>
 </body>
 </html>
