@@ -1,0 +1,30 @@
+<!-- templates/home.html -->
+{% load socialaccount %}
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <div>
+        <h1>Bem-vindo à nossa página!</h1>
+        {% if user.is_authenticated %}
+            <p>Olá, {{ user.username }}</p>
+            <form action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <button type="submit">Logout</button>
+            </form>
+            <form action="{% url 'admin:index' %}" method="post">
+                {% csrf_token %}
+                <button type="submit">Django Admin</button>
+            </form>
+        {% else %}
+            <p>Você não está logado. Por favor, faça o login para continuar.</p>
+            <a href="{% provider_login_url 'google' %}?next=/">Login</a>
+        {% endif %}
+    </div>
+</body>
+</html>
