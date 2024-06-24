@@ -1,7 +1,9 @@
 # superlogica-case
 
 O projeto em questão deve apresentar: 
+
     - Um sistema de login social com google como provedor e permitir o acesso com as mesmas credenciais ao django admin.
+
     - Uma opção de conversão de planilha como combinado no documento do case para a vaga
         Obs: só terá acesso ao conversor caso estiver logado
 
@@ -11,12 +13,7 @@ Caso faça o logout, será efetuado em ambas as páginas (home e admin).
 
 Para o login social foi utilizada a biblioteca django-allauth onde é possível efetuar a autenticação social com vários provedores, além de ter um endpoint para gestão das contas.
 
-Para ter total acesso ao admin do Django como superuser é necessario criar um através do comando:
 
-    Para o projeto com o Docker:
-        - sudo docker-compose exec web python3 manage.py createsuperuser
-    Para o projeto sem o Docker (necessário estar dentro do ambiente virtual e dentro do diretório app:
-        - python3 manage.py createsuperuser
 Atualmente possuem duas formas de rodar o projeto:
 
     1 - Utilizando o Docker:
@@ -53,5 +50,14 @@ Atualmente possuem duas formas de rodar o projeto:
     
             Rodar o projeto Django (Necessário estar dentro do diretório app):
             - python3 manage.py runserver
+
+
+
+Para ter total acesso ao admin do Django como superuser é necessario criar um através do comando:
+
+    Para o projeto com o Docker:
+        - sudo docker-compose exec web python3 manage.py createsuperuser
+    Para o projeto sem o Docker (necessário estar dentro do ambiente virtual e dentro do diretório app:
+        - python3 manage.py createsuperuser
             
         
