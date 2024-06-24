@@ -47,7 +47,7 @@ def transformar_planilha(planilha_original):
     return planilha_agrupada
 
 
-def handle_uploaded_file(f):
+def gerar_arquivo(f):
     file_path = '/tmp/original.csv'
     with open(file_path, 'wb+') as destination:
         for chunk in f.chunks():

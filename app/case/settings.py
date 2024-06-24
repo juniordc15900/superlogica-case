@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-r8t-0$)w)mto9-$abx0r8-6qdd%_5i*lzdr%^tw23-qco_&vpx
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 SITE_ID = 1
-ALLOWED_HOSTS = ["localhost", "case"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "0.0.0.0"]
 
 SOCIALACCOUNT_LOGIN_ON_GET=True
 
@@ -101,6 +101,7 @@ WSGI_APPLICATION = 'case.wsgi.application'
         'PORT': os.getenv('DB_PORT'),
     }
 }"""
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
