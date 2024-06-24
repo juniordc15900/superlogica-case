@@ -14,7 +14,7 @@ Caso faça o logout, será efetuado em ambas as páginas (home e admin).
 Para o login social foi utilizada a biblioteca django-allauth onde é possível efetuar a autenticação social com vários provedores, além de ter um endpoint para gestão das contas.
 
 
-Atualmente possuem duas formas de rodar o projeto:
+Atualmente possuem duas formas de executar o projeto:
 
     1 - Utilizando o Docker:
         
